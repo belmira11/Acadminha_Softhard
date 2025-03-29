@@ -2,17 +2,17 @@ import Image from "next/image";
 
 export default function Partnes() {
   const partnes = [
-    "/logo.jpg",
-    "/logo.jpg",
-    "/logo.jpg",
-    "/logo.jpg",
-    "/logo.jpg",
-    "/logo.jpg",
-    "/logo.jpg",
+    "/academia-orange (5).png",
+    "/academia-orange (5).png",
+    "/academia-orange (5).png",
+    "/academia-orange (5).png",
+    "/academia-orange (5).png",
+    "/academia-orange (5).png",
+    "/academia-orange (5).png",
   ];
 
   return (
-    <section className="py-10 bg-gray-100">
+    <section className="py-10 bg- [#8C8E8D]">
       <div className="max-w-6xl mx-auto px-6 text-center">
         <h2 className="text-2xl font-semibold mb-6">Conheça Nossos Parceiros</h2>
         
@@ -25,7 +25,7 @@ export default function Partnes() {
                 alt={`Parceiro ${index + 1}`}
                 layout="fill"
                 objectFit="cover"
-                className="rounded-full border-2 border-orange-500 shadow-md"
+                className="rounded-full border-2 border-[#D96A33]  shadow-md"
               />
             </div>
           ))}

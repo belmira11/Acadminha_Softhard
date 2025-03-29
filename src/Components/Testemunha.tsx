@@ -29,22 +29,22 @@ export default function Testemunha() {
   ];
 
   return (
-    <section className="py-10 bg-gray-100">
-      <div className="max-w-6xl mx-auto px-6 text-center">
-        <h2 className="text-2xl font-semibold mb-4">O que seus colegas dizem?</h2>
-        <p className="text-gray-600 mb-8">
+    <section className="py-12 bg-gray-100">
+      <div className="max-w-7xl mx-auto px-8 text-center bg-gray-100">
+        <h2 className="text-3xl font-semibold mb-6">O que seus colegas dizem?</h2>
+        <p className="text-gray-500 mb-10">
           Veja o que os alunos estão falando sobre a plataforma.
         </p>
 
         {/* Container com rolagem horizontal */}
-        <div className=" bg-white flex overflow-x-auto space-x-4 p-4">
+        <div className="bg-white flex overflow-x-auto space-x-6 p-6">
           {testemunha.map((item, index) => (
             <div
               key={index}
-              className="bg-orange-500 p-4 rounded-lg shadow-lg flex items-center w-[400px] h-[200px] flex-shrink-0"
+              className="bg-[#D96A33]  p-6 rounded-lg shadow-xl flex items-center w-[500px] h-[250px] flex-shrink-0"
             >
               {/* Vídeo ocupando toda a altura da div */}
-              <div className="h-full w-40 flex-shrink-0">
+              <div className="h-full w-48 flex-shrink-0">
                 <iframe
                   className="w-full h-full rounded-lg"
                   src={item.videoUrl}
@@ -54,17 +54,17 @@ export default function Testemunha() {
               </div>
 
               {/* Texto à direita */}
-              <div className="text-white text-left ml-4 flex-1">
+              <div className="text-white text-left ml-6 flex-1">
                 {/* Ícones de Estrela */}
-                <div className="flex mb-2 text-yellow-300">
+                <div className="flex mb-3 text-yellow-300">
                   {[...Array(5)].map((_, i) => (
                     <FaStar key={i} className="mr-1" />
                   ))}
                 </div>
 
-                <h3 className="text-lg font-semibold">{item.title}</h3>
-                <p className="text-sm">{item.text}</p>
-                <p className="mt-2 font-semibold">👤 {item.user}</p>
+                <h3 className="text-xl font-semibold">{item.title}</h3>
+                <p className="text-base">{item.text}</p>
+                <p className="mt-3 font-semibold">👤 {item.user}</p>
               </div>
             </div>
           ))}

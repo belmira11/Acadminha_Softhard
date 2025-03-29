@@ -19,8 +19,8 @@ export default function Questoes() {
   };
 
   return (
-    <section className=" bg-white max-w-3xl mx-auto py-12">
-      <div className="text-center">
+    <section className="bg-white w-full py-12 px-6">
+      <div className="text-center max-w-4xl mx-auto">
         <h2 className="text-2xl font-bold">Dúvidas? Nós temos as respostas!</h2>
         <p className="text-gray-500 text-sm mt-2">
           Se ainda tens questões sobre os nossos cursos, funcionamento da plataforma ou certificações, não te preocupes!
@@ -28,9 +28,9 @@ export default function Questoes() {
         </p>
       </div>
 
-      <div className="mt-6 space-y-2">
+      <div className="mt-6 space-y-2 max-w-6xl mx-auto">
         {faqs.map((faq, index) => (
-          <div key={index} className="border rounded-lg overflow-hidden">
+          <div key={index} className="border rounded-lg overflow-hidden w-full">
             <button
               onClick={() => toggleFAQ(index)}
               className="w-full flex justify-between items-center p-4 bg-gray-100 hover:bg-gray-200 transition"
@@ -38,7 +38,7 @@ export default function Questoes() {
               <span className="font-medium">{faq.question}</span>
               <ChevronDown className={`w-5 h-5 transition-transform ${openIndex === index ? "rotate-180" : ""}`} />
             </button>
-            {openIndex === index && <p className="p-4 text-gray-600">{faq.answer}</p>}
+            {openIndex === index && <p className="p-4 text-gray-600 bg-gray-50">{faq.answer}</p>}
           </div>
         ))}
       </div>

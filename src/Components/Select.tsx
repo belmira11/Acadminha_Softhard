@@ -1,6 +1,6 @@
 export default function Select() {
     return (
-      <section className="bg-orange-500 py-8  ">
+      <section className="bg-[#D96A33]  rounded-tl-[80px] py-8 ">
         <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between">
           <div className="text-white font-semibold text-lg md:w-1/3">
             <p>Capacite-se com o conhecimento. A qualquer hora e em qualquer lugar!</p>
