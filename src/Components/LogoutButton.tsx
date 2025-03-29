@@ -3,7 +3,7 @@
 
 import { useState } from "react";
 import { MessageSquare } from "lucide-react";
-import Chat from "@/Components/Chattemp"; // Importa o componente do chat
+import Chattemp from "@/Components/Chattemp"; // Importa o componente do chat
 
 export default function ChatButton() {
   const [isChatOpen, setIsChatOpen] = useState(false);
@@ -19,7 +19,7 @@ export default function ChatButton() {
 
       {isChatOpen && (
         <div className="absolute bottom-14 right-0 bg-white p-4 rounded-lg shadow-lg w-96">
-          <Chat />
+          <Chattemp />
         </div>
       )}
     </div>
