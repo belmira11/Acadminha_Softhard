@@ -3,7 +3,7 @@
 
 import { useState } from "react";
 import { MessageSquare } from "lucide-react";
-import Chat from "@/Components/Chat"; // Importa o componente do chat
+import Chat from "@/Components/Chattemp"; // Importa o componente do chat
 
 export default function ChatButton() {
   const [isChatOpen, setIsChatOpen] = useState(false);
