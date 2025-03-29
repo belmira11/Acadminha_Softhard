@@ -1,6 +1,6 @@
 // pages/chat.js
-import  Chat from "@/Components/Chattemp";
+import  Chattemp from "@/Components/Chattemp";
 
 export default function Chate() {
-  return <Chat/>;
+  return <Chattemp/>;
 }

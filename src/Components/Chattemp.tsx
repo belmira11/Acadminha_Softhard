@@ -22,7 +22,7 @@ interface Message {
   timestamp: Timestamp | null;
 }
 
-export default function ChatPopup() {
+export default function Chattemp() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [newMessage, setNewMessage] = useState<string>("");
   const [user] = useAuthState(auth);
