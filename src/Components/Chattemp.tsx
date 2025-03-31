@@ -1,58 +1,39 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { db, auth } from "../firebaseConfig";
-import {
-  collection,
-  addDoc,
-  query,
-  orderBy,
-  onSnapshot,
-  serverTimestamp,
-  Timestamp,
-} from "firebase/firestore";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { Send, X } from "lucide-react";
+import { db } from "../firebaseConfig";
+import { collection, addDoc, query, orderBy, onSnapshot, serverTimestamp } from "firebase/firestore";
 
-// Definição do tipo para as mensagens
-interface Message {
-  id: string;
-  text: string;
-  user: string;
-  timestamp: Timestamp | null;
-}
+import { MessageSquare } from "lucide-react"; // ✅ Importação corrigida
 
-export default function Chattemp() {
-  const [messages, setMessages] = useState<Message[]>([]);
-  const [newMessage, setNewMessage] = useState<string>("");
-  const [user] = useAuthState(auth);
-  const [isOpen, setIsOpen] = useState<boolean>(true);
+export default function Chat() {
+  const [messages, setMessages] = useState<{ id: string; text: string }[]>([]);
+  const [newMessage, setNewMessage] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const q = query(collection(db, "messages"), orderBy("timestamp", "asc"));
-    const unsubscribe = onSnapshot(q, (snapshot) => {
-      setMessages(
-        snapshot.docs.map((doc) => {
-          const data = doc.data();
-          return {
-            id: doc.id,
-            text: data.text,
-            user: data.user,
-            timestamp: data.timestamp ? data.timestamp : null,
-          };
-        })
-      );
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      const msgs: { id: string; text: string }[] = [];
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        msgs.push({ 
+          id: doc.id, 
+          text: data.text || "Mensagem sem texto" 
+        });
+      });
+      setMessages(msgs);
     });
+
     return () => unsubscribe();
   }, []);
 
-  const sendMessage = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!newMessage.trim() || !user) return;
+  const sendMessage = async () => {
+    if (newMessage.trim() === "") return;
+
     try {
       await addDoc(collection(db, "messages"), {
         text: newMessage,
-        user: user.displayName || "Anônimo",
         timestamp: serverTimestamp(),
       });
       setNewMessage("");
@@ -61,43 +42,44 @@ export default function Chattemp() {
     }
   };
 
-  if (!isOpen) return null;
-
   return (
-    <div className="fixed bottom-10 right-10 w-80 bg-white shadow-lg rounded-xl overflow-hidden z-50">
-      {/* Cabeçalho */}
-      <div className="bg-gray-200 p-3 flex justify-between items-center">
-        <span className="font-semibold">Soft Assistente</span>
-        <button onClick={() => setIsOpen(false)}>
-          <X size={18} className="text-gray-600" />
-        </button>
-      </div>
+    <div className="fixed bottom-4 right-4">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="bg-[#D96A33] text-white p-3 rounded-full hover:bg-[#D96A33] transition-all shadow-lg flex items-center"
+      >
+        <MessageSquare size={24} /> {/* ✅ Ícone agora funciona */}
+      </button>
 
-      {/* Corpo do Chat */}
-      <div className="p-3 h-72 overflow-y-auto bg-gray-100">
-        {messages.map((msg) => (
-          <div key={msg.id} className="mb-2">
-            <div className={`p-2 rounded-lg max-w-[80%] ${msg.user === user?.displayName ? "bg-blue-500 text-white self-end ml-auto" : "bg-gray-300 text-black"}`}>
-              <p className="text-sm">{msg.text}</p>
-            </div>
+      {isOpen && (
+        <div className="w-96 bg-white border border-gray-300 shadow-lg rounded-lg p-4 relative">
+          <div className="bg-gray-200 p-3 rounded-t-lg flex justify-between items-center">
+            <h2 className="text-lg font-semibold">Soft Assistente</h2>
+            <button className="text-gray-500" onClick={() => setIsOpen(false)}>✖</button>
           </div>
-        ))}
-      </div>
 
-      {/* Campo de Entrada */}
-      <form onSubmit={sendMessage} className="flex items-center border-t p-2 bg-white">
-        <input
-          type="text"
-          className="flex-1 p-2 text-sm border-none outline-none bg-white"
-          placeholder="Digite sua mensagem..."
-          value={newMessage}
-          onChange={(e) => setNewMessage(e.target.value)}
-        />
-        <button type="submit" className="text-blue-500 p-2">
-          <Send size={20} />
-        </button>
-      </form>
+          <div className="h-72 overflow-y-auto bg-blue-100 p-4 rounded-b-lg">
+            {messages.map((msg) => (
+              <div key={msg.id} className="bg-white p-2 rounded-lg shadow mb-2 max-w-xs">
+                {msg.text}
+              </div>
+            ))}
+          </div>
+
+          <div className="border-gray-50 flex items-center border-t- p-2">
+            <input
+              className="border p-2 w-full rounded-lg" 
+              type="text"
+              value={newMessage}
+              onChange={(e) => setNewMessage(e.target.value)}
+              placeholder="Digite sua mensagem..."
+            />
+            <button className="bg-gray-500 text-white p-2 ml-2 rounded-lg hover:bg-gray-600 transition" onClick={sendMessage}>
+              ✈
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
-
