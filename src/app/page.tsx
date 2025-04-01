@@ -10,7 +10,8 @@ import Testemunha from "@/Components/Testemunha";
 import Footer from "@/Components/Footer"
 import Quadroh from "@/Components/Quadroh";
 import Questoes from "@/Components/Questoes";
-import LogoutButon from "@/Components/LogoutButton"
+import Chattemp from "@/Components/Chattemp"
+
 
 export default function Home() {
   return (
@@ -26,9 +27,9 @@ export default function Home() {
       < Testemunha/>
       < Quadroh/>
       < Questoes/>
-      
       < Footer/>
-      < LogoutButon/>
+      < Chattemp/>
+      
       
     </>
   );

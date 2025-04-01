@@ -13,25 +13,25 @@ export default function Quadroh() {
     <section className="bg-white text-center py-12 px-6">
       <h2 className="text-2xl font-bold">
         Será que tens o que é preciso para entrar no nosso{' '}
-        <span className="text-[#D96A33] ">QUADRO DE HONRA?</span>
+        <span className="text-[#D96A33]">QUADRO DE HONRA?</span>
       </h2>
       <p className="mt-2 text-gray-600 max-w-xl mx-auto">
         Aqui só entram os melhores! Dá o teu máximo, destaca-te nos treinos e garante o teu lugar no nosso Quadro de Honra. Estás pronto para o desafio?
       </p>
 
-      {/* Linha superior com 3 imagens */}
-      <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 justify-center">
+      {/* Linha superior com 3 imagens próximas */}
+      <div className="mt-8 flex justify-center gap-25">
         {honors.slice(0, 3).map((student) => (
-          <div key={student.id} className="relative w-40 h-52 md:w-48 md:h-60 rounded-lg overflow-hidden shadow-lg mx-auto">
+          <div key={student.id} className="relative w-44 h-56 md:w-48 md:h-60 overflow-hidden shadow-lg">
             <Image src={student.src} alt={student.alt} layout="fill" objectFit="cover" />
           </div>
         ))}
       </div>
 
       {/* Linha inferior com 2 imagens centralizadas */}
-      <div className="mt-6 flex justify-center gap-50">
+      <div className="mt-6 flex justify-center gap-30">
         {honors.slice(3).map((student) => (
-          <div key={student.id} className="relative w-40 h-52 md:w-48 md:h-60 rounded-lg overflow-hidden shadow-lg">
+          <div key={student.id} className="relative w-44 h-56 md:w-48 md:h-60 overflow-hidden shadow-lg">
             <Image src={student.src} alt={student.alt} layout="fill" objectFit="cover" />
           </div>
         ))}

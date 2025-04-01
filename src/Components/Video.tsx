@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function VideoSection() {
   return (
-    <div className="flex flex-col md:flex-row items-center justify-center min-h-screen bg-white p-6">
+    <div className="bg-while flex flex-col md:flex-row items-center justify-center min-h-screen  p-6">
       <div className="w-full md:w-1/2 flex justify-center h-[350px] md:h-[450px]">
         {/* Vídeo Responsivo */}
         <div className="w-full max-w-lg h-full bg-black rounded-lg overflow-hidden">
@@ -21,13 +21,16 @@ export default function VideoSection() {
       <div className="w-full md:w-1/2 mt-6 md:mt-0 md:pl-8 h-auto md:h-[450px] flex flex-col justify-center">
         <h2 className="text-xl md:text-2xl font-bold mb-4">Posso lhe contar um segredo?</h2>
         <p className="text-gray-600 text-sm md:text-base mb-4">
-          Moeda para os estudantes da Softhard, por exemplo, se o estudante
-          conseguir trazer 1 estudante ele recebe 1000 SoftCoins (equivalente a
-          1000 Kwanzas) e vai acumulando até poder pagar um curso.
+          O Conhecimento Certo pode Mudar Tudo - Abrir Portas, Criar 
+          Oportuniddes E Transformar Vidas. No Academia Softhard, Não 
+          Oferecemos Apenas Cursos, Oferecemos Um Caminho Para o
+          Teu Sucesso Mas Não Vamos Só Contar-te Isso, Queremos 
+          Mostrar-Te Assite Ao Video E Descobre Como Tudo Começou 
         </p>
-        <button className="bg-[#D96A33] text-white py-2 px-6 rounded-lg hover:bg-[#D96A33] transition">
-          Começar
-        </button>
+        <button className="bg-black text-white px-6 py-2 rounded-full font-medium text-lg w-40 text-center hover:bg-gray-800 transition">
+        Começar
+       </button>
+
       </div>
     </div>
   );

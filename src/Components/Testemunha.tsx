@@ -12,7 +12,7 @@ export default function Testemunha() {
       videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
       title: "Experiência Fantástica!",
       text: "Aprender nunca foi tão fácil.",
-      user: "Outro Usuário",
+      user: "Nome Usuário",
     },
     {
       videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
@@ -33,11 +33,11 @@ export default function Testemunha() {
       <div className="max-w-7xl mx-auto px-8 text-center bg-gray-100">
         <h2 className="text-3xl font-semibold mb-6">O que seus colegas dizem?</h2>
         <p className="text-gray-500 mb-10">
-          Veja o que os alunos estão falando sobre a plataforma.
+          Resultado Reais, Histórias Reais, Descobre como A Nossa Plataforma Ajudou Estudantes Como Tu A Crescer E <br/>Conquistar Novas Oportunidade! 
         </p>
 
         {/* Container com rolagem horizontal */}
-        <div className="bg-white flex overflow-x-auto space-x-6 p-6">
+        <div className="bg-gray-100 flex overflow-x-auto space-x-6 p-6">
           {testemunha.map((item, index) => (
             <div
               key={index}
